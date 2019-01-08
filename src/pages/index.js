@@ -13,6 +13,7 @@ import RadioGroupContainer from '../components/radioTheme/RadioGroupContainer'
 const CardGroup = styled(Card.Group)`
   &&& {
     margin-top: 6.75rem;
+    margin-bottom: 1rem;
     font-size: 1rem;
       @media (max-width: 768px) {
           margin-top: 5rem;  
