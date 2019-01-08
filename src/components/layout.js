@@ -1,9 +1,8 @@
-import React, { Fragment, Component } from 'react'
+import React, { Fragment } from 'react'
 import PropTypes from 'prop-types'
 import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
-import { ThemeProvider } from 'styled-components'
 import { Provider } from '../context'
 import 'semantic-ui-css/semantic.min.css'
 import './layout.css'

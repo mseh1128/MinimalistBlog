@@ -1,14 +1,12 @@
 /* eslint-disable no-tabs */
 import React, { Component } from 'react'
 import { Card } from 'semantic-ui-react'
-import styled, { css } from 'styled-components'
+import styled from 'styled-components'
 import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import BlogCard from '../components/BlogCard'
 import RadioGroupContainer from '../components/RadioGroupContainer'
-import Image from '../components/image'
-import SEO from '../components/seo'
 
 // const cards = [<BlogCard text={tempText} />, <BlogCard text={tempText} />]
 
@@ -70,7 +68,7 @@ class IndexPage extends Component {
 }
 export const pageQuery = graphql`
   query BlogQuery{
-      allMarkdownRemark {
+       allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
     edges {
       node {
     id
