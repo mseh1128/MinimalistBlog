@@ -3,6 +3,7 @@ path: "/post-one"
 date: "2019-01-03"
 title: "My First Gatsby Post"
 author: "Manav Sehgal"
+coverImage: "./cute-dog.jpeg"
 tags: ['home', 'lorem', 'life', 'work']
 ---
 

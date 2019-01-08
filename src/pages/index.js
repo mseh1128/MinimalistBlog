@@ -57,8 +57,8 @@ class IndexPage extends Component {
       <Layout>
         <CardGroup style={{ marginBottom: `1rem` }}>
           {this.props.data.allMarkdownRemark.edges.map(post => {
-            const { html, id, frontmatter: { title, author, date, tags } } = post.node
-            return <BlogCard tags={tags} key={id} text={html} title={title} author={author} date={date} />
+            const { html, id, frontmatter: { title, author, date, tags, coverImage } } = post.node
+            return <BlogCard tags={tags} key={id} text={html} title={title} author={author} date={date} coverImage={coverImage} />
           })}
         </CardGroup>
         {radioGroup}
@@ -76,7 +76,15 @@ export const pageQuery = graphql`
 	      frontmatter {
       path
           title
-    date
+    date(formatString: "MM/DD/YYYY")
+    coverImage {
+              publicURL
+              childImageSharp {
+        fluid(maxWidth: 2000, maxHeight: 1100) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+            }
     author
     tags
   }

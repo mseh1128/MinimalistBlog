@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
-import { Card, Image } from 'semantic-ui-react'
+import { Card } from 'semantic-ui-react'
+import Img from 'gatsby-image'
 import styled from 'styled-components'
 
 const ReadMore = styled.button`
@@ -20,6 +21,12 @@ const CustomCard = styled(Card)`
   &&& {
     box-shadow: 0 0 0 1px #d4d4d5, 0 6px 0 0 ${ props => props.theme.primary }, 0 1px 3px 0 #d4d4d5 !important;
   }
+`
+
+const ImageContainer = styled.div`
+  padding: 1rem 1rem 0rem 1rem;
+  margin-bottom: 1rem;
+  background-color: #fff;
 `
 
 class BlogCard extends Component {
@@ -54,9 +61,10 @@ class BlogCard extends Component {
   }
 
   render () {
-    const { text, author, title, date } = this.props
+    const { text, author, title, date, coverImage } = this.props
     const { showFullText } = this.state
     let shownText = null
+    let image = null
     // console.log(text)
     if (showFullText) {
       // shownText = <div dangerouslySetInnerHTML={{ __html: text }}></div>
@@ -65,21 +73,26 @@ class BlogCard extends Component {
       const readMoreText = `${ this.getFirstNWords(text, 20) }<span>[...]</span>`
       shownText = this.descriptionData('Read More', readMoreText)
     }
+    if (coverImage) {
+      console.log('Cover image found')
+      const { childImageSharp: { fluid } } = coverImage
+      image = (
+        <ImageContainer>
+          <Img style={{ margin: 0 }} fluid={fluid} />
+        </ImageContainer>
+      )
+      console.log(image)
+    } else {
+      console.log('Nothing found')
+    }
 
     return (
       <CustomCard
         fluid
         centered
       >
-        <Image
-          style={{
-            padding: '1rem 1rem 0rem 1rem',
-            marginBottom: '1rem',
-            backgroundColor: '#fff',
-          }}
-          src="https://cdn.static-economist.com/sites/default/files/images/print-edition/20180127_SRP057_0.jpg"
-        />
-        <Card.Content style={{ border: '0' }}>
+        {image}
+        < Card.Content style={{ border: '0' }}>
           <Card.Header style={{ color: '#535462' }}>
             {title}
           </Card.Header>
@@ -89,8 +102,8 @@ class BlogCard extends Component {
           <Card.Description style={{ color: 'black' }}>
             {shownText}
           </Card.Description>
-        </Card.Content>
-      </CustomCard>
+        </Card.Content >
+      </CustomCard >
     )
   }
 }
