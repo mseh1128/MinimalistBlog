@@ -6,7 +6,7 @@ import { graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import BlogCard from '../components/BlogCard'
-import RadioGroupContainer from '../components/RadioGroupContainer'
+import RadioGroupContainer from '../components/radioTheme/RadioGroupContainer'
 
 // const cards = [<BlogCard text={tempText} />, <BlogCard text={tempText} />]
 
@@ -55,7 +55,7 @@ class IndexPage extends Component {
 
     return (
       <Layout>
-        <CardGroup style={{ marginBottom: `1rem` }}>
+        <CardGroup>
           {this.props.data.allMarkdownRemark.edges.map(post => {
             const { html, id, frontmatter: { title, author, date, tags, coverImage } } = post.node
             return <BlogCard tags={tags} key={id} text={html} title={title} author={author} date={date} coverImage={coverImage} />

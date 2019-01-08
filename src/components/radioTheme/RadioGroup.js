@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Form, Radio } from 'semantic-ui-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Consumer } from '../context'
+import { Consumer } from '../../context'
 
 const FormStyled = styled(Form)`
   &&& {
