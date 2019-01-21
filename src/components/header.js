@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-const HeaderContainer = styled.div`
+const HeaderContainer = styled.header`
       background: #FFFFFF;
       margin-bottom: 1.45rem;
       border-bottom: 1px solid #eee;
@@ -31,6 +31,9 @@ const Title = styled.h1`
       }
       @media (max-width: 375px) {
         font-size: 1.5rem;
+      }
+      &:hover {
+        cursor: pointer;
       }
 `
 
