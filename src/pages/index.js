@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { Card } from 'semantic-ui-react'
 import styled from 'styled-components'
 import { graphql } from 'gatsby'
+import SEO from '../components/seo'
 
 import Layout from '../components/layout'
 import BlogCard from '../components/BlogCard'
@@ -56,6 +57,7 @@ class IndexPage extends Component {
 
     return (
       <Layout>
+        <SEO title="The homepage of a minimalist practice blog made for practice." />
         <CardGroup>
           {this.props.data.allMarkdownRemark.edges.map(post => {
             const { html, id, frontmatter: { title, author, date, tags, coverImage } } = post.node
